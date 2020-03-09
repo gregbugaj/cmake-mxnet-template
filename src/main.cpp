@@ -1,6 +1,8 @@
 #include <iostream>
 #include <set>
 #include <mxnet-cpp/MxNetCpp.h>
+#include <leptonica/allheaders.h>
+#include "opencv2/opencv.hpp"
 
 using namespace mxnet::cpp;
 using namespace std::chrono;
@@ -12,6 +14,12 @@ static mxnet::cpp::Context global_ctx(mxnet::cpp::kCPU, 0);
 // static Context global_ctx(mxnet::cpp::kCPU,0);
 
 int main(int argc, char const *argv[]) {
+    int version;
+    MXGetVersion(&version);
+
+    LG << "MxNet     version : " << version;
+    LG << "Leptonica version : " << getLeptonicaVersion();
+    LG << "OpenCV    version : " << CV_VERSION;
     LG << "MxNet Base";
     iterators_mxnet();
 
@@ -23,8 +31,6 @@ int main(int argc, char const *argv[]) {
  * @return
  */
 int iterators_mxnet() {
-    auto ctx = Context::cpu();  // Use CPU
-
     mx_uint num_data_iter_creators;
     DataIterCreator *data_iter_creators = nullptr;
 
