@@ -2,7 +2,7 @@
 #include <set>
 #include <mxnet-cpp/MxNetCpp.h>
 #include <leptonica/allheaders.h>
-#include "opencv2/opencv.hpp"
+#include <opencv2/opencv.hpp>
 
 using namespace mxnet::cpp;
 using namespace std::chrono;
