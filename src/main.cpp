@@ -3,6 +3,7 @@
 #include <mxnet-cpp/MxNetCpp.h>
 #include <leptonica/allheaders.h>
 #include <opencv2/opencv.hpp>
+#include <version.h>
 
 using namespace mxnet::cpp;
 using namespace std::chrono;
@@ -17,6 +18,7 @@ int main(int argc, char const *argv[]) {
     int version;
     MXGetVersion(&version);
 
+    LG << "Commit : " << GIT_COMMIT_HASH;
     LG << "MxNet     version : " << version;
     LG << "Leptonica version : " << getLeptonicaVersion();
     LG << "OpenCV    version : " << CV_VERSION;
