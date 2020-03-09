@@ -2,7 +2,6 @@
 #include <set>
 #include <mxnet-cpp/MxNetCpp.h>
 
-namespace fs = std::experimental::filesystem;
 using namespace mxnet::cpp;
 using namespace std::chrono;
 

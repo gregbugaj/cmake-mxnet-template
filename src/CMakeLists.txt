@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 
-project(mxnet_template)
+project(mxnet_template C CXX)
 set(TARGET_NAME "mxnet_template")
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 SET(GCC_CUSTOM_COMPILE_FLAGS "-fverbose-asm -std=gnu++17  -mpopcnt")
 SET(GCC_CUSTOM_LINK_FLAGS    "-lstdc++fs")
@@ -47,11 +48,12 @@ configure_file(
 )
 
 # Source files
-#
-set(SOURCE_FILES main.cpp ImageHash.cpp ImageHash.h AverageHash.cpp AverageHash.h DifferenceHash.cpp DifferenceHash.h PerceptualHash.cpp PerceptualHash.h HistogramComparison.cpp HistogramComparison.h types.h HashDistance.cpp HashDistance.h leptonutil.cpp leptonutil.h ImageSimilarity.cpp ImageSimilarity.h fileutil.cpp fileutil.h LBPMatcher.cpp LBPMatcher.h low.cpp low.h Segmenter.cpp Segmenter.h Extractor.cpp Extractor.h Clustering.cpp Clustering.h catch.hpp TestCase.cpp heatmap.h heatmap.cpp LbpGenerator.hpp generators/lbp/Lbp.cpp generators/lbp/Lbp.hpp generators/elbp/Elbp.cpp generators/elbp/Elbp.hpp generators/slbp/Slbp.cpp generators/slbp/Slbp.hpp generators/ilbp/Ilbp.cpp generators/ilbp/Ilbp.hpp Lenet.hpp utils.hpp Predictor.cpp Predictor.hpp)
+
+set(SOURCE_FILES main.cpp)
 
 # Build as executable
 add_executable(${TARGET_NAME} ${SOURCE_FILES})
+set_target_properties(${TARGET_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 
 ### Leptonica
 include(FindLeptonica)
@@ -64,7 +66,6 @@ else ()
     message(FATAL_ERROR "libleptonica-dev is required install with 'apt-get install libleptonica-dev'")
 endif(LEPTONICA_FOUND)
 ### Leptonica
-
 
 
 ### OpenCV
@@ -99,13 +100,7 @@ endif(MxNet_FOUND)
 # Generated
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/generated)
 
-#ADD_LIBRARY(lept STATIC IMPORTED)
-#SET_PROPERTY(TARGET lept PROPERTY IMPORTED_LOCATION /usr/local/lib/liblept.so)
-
-# PREDATOR
-#SET_PROPERTY(TARGET lept PROPERTY IMPORTED_LOCATION /usr/local/lib/libleptonica.so)
-
-# copy test-deck files
+# copy test-deck files if any
 message("++ EnvParameter : CMAKE_BINARY_DIR     = ${CMAKE_BINARY_DIR}")
 
 file(GLOB MY_TESTDECK_FILES "${CMAKE_SOURCE_DIR}/test-deck")
@@ -113,4 +108,6 @@ file(COPY ${MY_TESTDECK_FILES} DESTINATION "${CMAKE_BINARY_DIR}/")
 
 # Filesystem support
 target_link_libraries(${TARGET_NAME} stdc++fs)
-# install(TARGETS lbp-matcher DESTINATION bin)
+
+# Install
+install(TARGETS ${TARGET_NAME} DESTINATION bin)
