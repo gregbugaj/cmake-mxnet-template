@@ -1,3 +1,4 @@
+./src/generated
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
