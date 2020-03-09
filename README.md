@@ -1,6 +1,6 @@
 # cmake-mxnet-template
-cmake project template that includes mxnet, leptonica, opencv preconfigured
 
+cmake project template that includes mxnet, leptonica, opencv preconfigured
 
 ## CMAKE Configuration
 
@@ -17,3 +17,8 @@ Project has following dependencies
 * OpenCV - FindOpenCV.cmake
 
 ## Building
+
+
+## Resources
+
+https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=95651665
