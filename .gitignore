@@ -1,5 +1,7 @@
 build/
 src/generated/*
+bin/
+lib/
 ./src/generated
 CMakeLists.txt.user
 CMakeCache.txt

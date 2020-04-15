@@ -3,14 +3,19 @@ cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 project(mxnet_template C CXX)
 set(TARGET_NAME "mxnet_template")
 
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS ON)
+
+#SET(GCC_CUSTOM_COMPILE_FLAGS "-fverbose-asm -std=gnu++17  -mpopcnt -static-libgcc -static-libstdc++ -static")
 
 SET(GCC_CUSTOM_COMPILE_FLAGS "-fverbose-asm -std=gnu++17  -mpopcnt")
 SET(GCC_CUSTOM_LINK_FLAGS    "-lstdc++fs")
 
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_CUSTOM_COMPILE_FLAGS}" )
 SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_CUSTOM_LINK_FLAGS}" )
+
 
 # Set a default build type if none was specified
 if(NOT CMAKE_BUILD_TYPE)
@@ -54,6 +59,8 @@ set(SOURCE_FILES main.cpp)
 # Build as executable
 add_executable(${TARGET_NAME} ${SOURCE_FILES})
 set_target_properties(${TARGET_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+#set_target_properties(${TARGET_NAME} PROPERTIES LINK_SEARCH_END_STATIC 1)
+
 
 ### Leptonica
 include(FindLeptonica)
@@ -89,10 +96,17 @@ endif(OpenCV_FOUND)
 # MxNet
 include(FindMxNet)
 
+find_package(Threads)
+
 if (MxNet_FOUND)
     message(STATUS "MxNet ready")
     include_directories(${MxNet_INCLUDE_DIRS})
+    
     target_link_libraries(${TARGET_NAME} ${MxNet_LIB})
+
+    # Setup for static linking
+    #target_link_libraries(${TARGET_NAME}  ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_SOURCE_DIR}/lib/libmxnet.a)
+
 else ()
     message(FATAL_ERROR "MXNET not ready, compile from source with 'USE_CPP_PACKAGE=1' ")
 endif(MxNet_FOUND)

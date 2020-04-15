@@ -35,7 +35,7 @@ SET(MXNET_LIB_SEARCH_PATHS
         /lib/mxnet
         /lib64
         /usr/lib
-        /usr/lib/mxnet
+        /usr/lib/mxnet        
         /usr/lib64
         /usr/local/lib
         /usr/local/lib64
