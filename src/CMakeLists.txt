@@ -3,10 +3,12 @@ cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 project(mxnet_template C CXX)
 set(TARGET_NAME "mxnet_template")
 
-
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
+
+# This is to prevent : -- Set runtime path of "./bin/matchbox" to ""
+SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 #SET(GCC_CUSTOM_COMPILE_FLAGS "-fverbose-asm -std=gnu++17  -mpopcnt -static-libgcc -static-libstdc++ -static")
 
