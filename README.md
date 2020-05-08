@@ -54,6 +54,12 @@ After the MXNET install you should have have libraries in following locations
 ```
 
 
+## Dependencies
+
+* Leptonica
+* OpenCV
+* MXNET 
+
 ## Resources
 
 https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=95651665
