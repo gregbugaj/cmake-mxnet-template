@@ -56,6 +56,15 @@ After the MXNET install you should have have libraries in following locations
 
 ## Dependencies
 
+```
+apt-get -qq update
+apt-get install --no-install-recommends \
+  software-properties-common apt-transport-https \
+  build-essential cmake libjemalloc-dev \
+  libatlas-base-dev liblapack-dev liblapacke-dev libopenblas-dev \
+  libcurl4-openssl-dev libzmq3-dev ninja-build libhdf5-dev libomp-dev
+```
+
 * Leptonica   :: sudo apt-get install libleptonica-dev
 * OpenCV      :: https://github.com/milq/milq/blob/master/scripts/bash/install-opencv.sh
 * mxnet
