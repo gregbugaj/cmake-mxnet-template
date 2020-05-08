@@ -56,9 +56,9 @@ After the MXNET install you should have have libraries in following locations
 
 ## Dependencies
 
-* Leptonica
-* OpenCV
-* MXNET 
+* Leptonica   :: sudo apt-get install libleptonica-dev
+* OpenCV      :: https://github.com/milq/milq/blob/master/scripts/bash/install-opencv.sh
+* mxnet
 
 ## Resources
 
