@@ -2,10 +2,11 @@
 
 ## Checkout MXNET 
 
-````
-$ git clone --recursive https://github.com/apache/incubator-mxnet mxnet
-$ cd mxnet
-$ git submodule update --init --recursive
+```
+git clone --recursive https://github.com/apache/incubator-mxnet mxnet
+cd mxnet
+# git checkout SPECIFIC_TAG
+git submodule update --init --recursive
 ```
 
 cmake project template that includes mxnet, leptonica, opencv preconfigured
