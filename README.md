@@ -1,5 +1,13 @@
 # cmake-mxnet-template
 
+## Checkout MXNET 
+
+````
+$ git clone --recursive https://github.com/apache/incubator-mxnet mxnet
+$ cd mxnet
+$ git submodule update --init --recursive
+```
+
 cmake project template that includes mxnet, leptonica, opencv preconfigured
 
 ## CMAKE Configuration
