@@ -39,6 +39,15 @@ make -j USE_CPP_PACKAGE=1
 make install
 ```
 
+Release with CUDA enabled 
+```bash
+#!/bin/sh
+rm -rf build
+mkdir -p build && cd build
+cmake -DUSE_CPP_PACKAGE=ON -DUSE_CUDA=ON -DUSE_CUDNN=ON  -DUSE_TVM_OP=OFF -DUSE_OPENMP=ON -DUSE_OPENCV=ON -DUSE_MKL_IF_AVAILABLE=OFF -DCMAKE_BUILD_TYPE=Release .. -GNinja ..
+```
+
+
 Ninja build
 
 ```bash
