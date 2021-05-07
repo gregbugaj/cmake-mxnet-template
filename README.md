@@ -57,10 +57,10 @@ mkdir -p build && cd build
 cmake -DUSE_CPP_PACKAGE=ON -DUSE_CUDA=OFF -DUSE_OPENMP=ON -DUSE_OPENCV=ON -DUSE_MKL_IF_AVAILABLE=OFF -DCMAKE_BUILD_TYPE=Debug .. -GNinja ..
 
 # This uses CMake's Build Tool Mode, which is an abstract interface for a couple of commands to the native build tool (e.g. make or Ninja) 
-cmake --build . --config Debug
+cmake --build . --config Debug -j 24
 
 # Build and Install
-cmake --build . --target install  --config Debug
+cmake --build . --target install  --config Debug -j 24
 ``
 
 After the MXNET install you should have have libraries in following locations
